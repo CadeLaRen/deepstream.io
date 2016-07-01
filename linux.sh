@@ -43,9 +43,10 @@ RUN apt-get install -y curl build-essential git ruby-dev rpm
 # install ruby 2 via rvm
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN curl -L https://get.rvm.io | bash -s stable
-RUN source ~/.bash_profile
-RUN rvm install ruby-2.1.7
-RUN rvm use --default ruby-2.1.7
+RUN /bin/bash -c "source ~/.bash_profile \
+    && rvm install ruby-2.1.7 \
+    && rvm use --default ruby-2.1.7 \
+
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs
 EOF
